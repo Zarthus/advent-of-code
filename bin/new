@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+
+if [[ $1 == "" || ! $1 =~ ^[0-9]{1,2}$ ]]; then
+    echo "Usage: new <day>"
+    exit 1
+fi
+
+day=$(printf "%02d" $1)
+
+mkdir "d$day"
+
+# windows (WSL)                                     || linux                        || mac
+pwsh.exe -Command Get-Clipboard > "d$day/input.txt" || xclip -o > "d$day/input.txt" || pbpaste > "d$day/input.txt"
+
+cat <<EOF > "d$day/main.go"
+package main
+
+import (
+    "os"
+
+    "liefland.net/aoc2023/helper"
+)
+
+func main() {
+    lines := helper.ReadInput(os.Open("d$day/input.txt"))
+
+    // Problem 1
+    println("Problem 1:", 0)
+
+    // Problem 2
+    println("Problem 2:", 0)
+}
+EOF
+
+echo "Done! You can now 'go run d$day/main.go'"

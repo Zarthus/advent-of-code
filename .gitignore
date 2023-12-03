@@ -1,3 +1,5 @@
 ## ignore all text input files that are not input.txt as they are usually debugging test cases
 *.txt
 !d*/input.txt
+
+d03

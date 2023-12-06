@@ -3,6 +3,7 @@ package helper
 import (
 	"bufio"
 	"os"
+	"strconv"
 )
 
 func ReadInput(file *os.File, err error) []string {
@@ -18,4 +19,12 @@ func ReadInput(file *os.File, err error) []string {
         lines = append(lines, scanner.Text())
     }
 	return lines
+}
+
+func EnsureAtoi(s string) int {
+	i, err := strconv.Atoi(s)
+	if err != nil {
+		panic(err)
+	}
+	return i
 }

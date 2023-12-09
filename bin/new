@@ -10,6 +10,7 @@ fi
 day=$(printf "%02d" $1)
 
 mkdir "d$day"
+touch "d$day/dummyinput.txt"
 
 # windows (WSL)                                     || linux                        || mac
 pwsh.exe -Command Get-Clipboard > "d$day/input.txt" || xclip -o > "d$day/input.txt" || pbpaste > "d$day/input.txt"

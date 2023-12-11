@@ -14,10 +14,10 @@ func ReadInput(file *os.File, err error) []string {
 	}
 
 	var lines []string
-    scanner := bufio.NewScanner(file)
-    for scanner.Scan() {
-        lines = append(lines, scanner.Text())
-    }
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
 	return lines
 }
 
@@ -27,4 +27,11 @@ func EnsureAtoi(s string) int {
 		panic(err)
 	}
 	return i
+}
+
+func Abs(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
 }

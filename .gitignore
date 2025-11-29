@@ -1,6 +1,10 @@
 ## ignore all text input files that are not input.txt as they are usually debugging test cases
-*.txt
 !src/d*/input.txt
-
-
 /target
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target

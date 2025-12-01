@@ -6,8 +6,8 @@ mod d01;
 struct Solver {
     day: u8,
     inputs: (Vec<String>, Vec<String>),
-    part1: fn(&[String]),
-    part2: fn(&[String]),
+    part1: fn(&mut std::io::BufWriter<std::io::StdoutLock>, &[String]),
+    part2: fn(&mut std::io::BufWriter<std::io::StdoutLock>, &[String]),
 }
 
 fn main() {
@@ -35,23 +35,25 @@ fn main() {
 }
 
 fn solve(solver: Solver, part: u8) {
+    let stdout = std::io::stdout().lock();
+    let mut writer = std::io::BufWriter::new(stdout);
     match part {
         1 => {
             let b = bench::Bench::new();
-            (solver.part1)(&solver.inputs.0);
+            (solver.part1)(&mut writer, &solver.inputs.0);
             b.end(format!("D{:2}-1", solver.day).as_str());
         }
         2 => {
             let b = bench::Bench::new();
-            (solver.part2)(&solver.inputs.1);
+            (solver.part2)(&mut writer, &solver.inputs.0);
             b.end(format!("D{:2}-2", solver.day).as_str());
         }
         0 => {
             let b = bench::Bench::new();
-            (solver.part1)(&solver.inputs.0);
+            (solver.part1)(&mut writer, &solver.inputs.0);
             b.end(format!("D{:2}-1", solver.day).as_str());
             let b = bench::Bench::new();
-            (solver.part2)(&solver.inputs.1);
+            (solver.part2)(&mut writer, &solver.inputs.1);
             b.end(format!("D{:2}-2", solver.day).as_str());
         }
         _ => {

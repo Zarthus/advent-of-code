@@ -2,6 +2,30 @@
 
 mod bench;
 mod d01;
+mod d02;
+
+#[macro_export]
+macro_rules! assert_output {
+    ($func:ident, $input:expr, $expected:expr) => {
+        let input: Vec<String> = $input;
+        let stdout = std::io::stdout().lock();
+        let mut writer = std::io::BufWriter::new(stdout);
+        $func(&mut writer, &input);
+        let output = String::from_utf8(writer.buffer().to_vec()).unwrap();
+        assert_eq!(output.trim(), $expected);
+    };
+}
+
+macro_rules! solver {
+    ($day:expr, $part1:expr, $part2:expr) => {
+        Solver {
+            day: $day,
+            inputs: load_inputs($day),
+            part1: $part1,
+            part2: $part2,
+        }
+    };
+}
 
 struct Solver {
     day: u8,
@@ -15,23 +39,15 @@ fn main() {
 
     println!("Day {}", day);
     let solver = match day {
-        1 => (d01::part1, d01::part2),
+        1 => solver!(day, d01::part1, d01::part2),
+        2 => solver!(day, d02::part1, d02::part2),
         _ => {
             eprintln!("Day {} is not yet implemented.", day);
             std::process::exit(1);
         }
     };
-    let inputs = load_inputs(day);
 
-    solve(
-        Solver {
-            day,
-            inputs,
-            part1: solver.0,
-            part2: solver.1,
-        },
-        part,
-    );
+    solve(solver, part);
 }
 
 fn solve(solver: Solver, part: u8) {

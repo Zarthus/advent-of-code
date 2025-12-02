@@ -97,30 +97,29 @@ fn parse_rotation(s: &str) -> Rotation {
 
 #[cfg(test)]
 mod test {
+    use super::*;
+    use crate::assert_output;
     use std::io::Read;
 
-    use super::*;
     const ROTATIONS: [&str; 10] = [
         "L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82",
     ];
 
     #[test]
     fn test_part1() {
-        let input: Vec<String> = ROTATIONS.iter().map(|s| s.to_string()).collect();
-        let stdout = std::io::stdout().lock();
-        let mut writer = std::io::BufWriter::new(stdout);
-        part1(&mut writer, &input);
-        let output = String::from_utf8(writer.buffer().to_vec()).unwrap();
-        assert_eq!(output.trim(), "3");
+        assert_output!(
+            part1,
+            ROTATIONS.iter().map(|i| i.to_string()).collect(),
+            "3"
+        );
     }
 
     #[test]
     fn test_part2() {
-        let input: Vec<String> = ROTATIONS.iter().map(|s| s.to_string()).collect();
-        let stdout = std::io::stdout().lock();
-        let mut writer = std::io::BufWriter::new(stdout);
-        part2(&mut writer, &input);
-        let output = String::from_utf8(writer.buffer().to_vec()).unwrap();
-        assert_eq!(output.trim(), "6");
+        assert_output!(
+            part2,
+            ROTATIONS.iter().map(|i| i.to_string()).collect(),
+            "6"
+        );
     }
 }

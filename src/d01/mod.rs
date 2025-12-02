@@ -14,7 +14,11 @@ impl std::fmt::Display for Rotation {
 }
 const START: u64 = 50;
 
-pub fn part1(writer: &mut std::io::BufWriter<std::io::StdoutLock>, input: &[String]) {
+pub fn part1(
+    writer: &mut std::io::BufWriter<std::io::StdoutLock>,
+    input: &[String],
+    _bench: &crate::bench::Bench,
+) {
     let rotations = parse_input(input);
 
     let mut position: i64 = START as i64;
@@ -45,7 +49,11 @@ pub fn part1(writer: &mut std::io::BufWriter<std::io::StdoutLock>, input: &[Stri
     write!(writer, "{}", counter).unwrap();
 }
 
-pub fn part2(writer: &mut std::io::BufWriter<std::io::StdoutLock>, input: &[String]) {
+pub fn part2(
+    writer: &mut std::io::BufWriter<std::io::StdoutLock>,
+    input: &[String],
+    _bench: &crate::bench::Bench,
+) {
     let rotations = parse_input(input);
 
     let mut position: i64 = START as i64;

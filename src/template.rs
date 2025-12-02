@@ -1,3 +1,5 @@
+use std::io::Write;
+
 pub fn part1(writer: &mut std::io::BufWriter<std::io::StdoutLock>, input: &[String]) {}
 
 pub fn part2(writer: &mut std::io::BufWriter<std::io::StdoutLock>, input: &[String]) {}

@@ -20,21 +20,19 @@ mod test {
     use crate::assert_output;
     use std::io::Read;
 
+    const INPUTS: [&str; 1] = ["NOT_IMPLEMENTED"];
+
+    fn inputs() -> Vec<String> {
+        INPUTS.iter().map(|s| s.to_string()).collect()
+    }
+
     #[test]
     fn test_part1() {
-        assert_output!(
-            part1,
-            vec!["NOT_IMPLEMENTED".to_string()],
-            "NOT_IMPLEMENTED"
-        );
+        assert_output!(part1, inputs(), "NOT_IMPLEMENTED");
     }
 
     #[test]
     fn test_part2() {
-        assert_output!(
-            part2,
-            vec!["NOT_IMPLEMENTED".to_string()],
-            "NOT_IMPLEMENTED"
-        );
+        assert_output!(part2, inputs(), "NOT_IMPLEMENTED");
     }
 }

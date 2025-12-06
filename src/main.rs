@@ -6,6 +6,7 @@ mod d02;
 mod d03;
 mod d04;
 mod d05;
+mod d06;
 
 #[macro_export]
 macro_rules! assert_output {
@@ -47,6 +48,7 @@ fn main() {
         3 => solver!(day, d03::part1, d03::part2),
         4 => solver!(day, d04::part1, d04::part2),
         5 => solver!(day, d05::part1, d05::part2),
+        6 => solver!(day, d06::part1, d06::part2),
         _ => {
             eprintln!("Day {} is not yet implemented.", day);
             std::process::exit(1);
